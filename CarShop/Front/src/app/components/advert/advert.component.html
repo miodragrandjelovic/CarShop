@@ -1,0 +1,139 @@
+<section id="nekiId"> 
+ 
+
+<div class="container bg-light pb-4" style="border-radius: 15px;">
+
+  <nav class="navbar navbar-expand-md navbar-light pt-3 pb-2">
+    <div class="container-xxl">
+
+        <a class="nav-link fw-bold" style="font-size: 30px;color: rgb(70, 64, 64);" href="profile">
+          {{name}}
+        </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="home" style="font-size: 20px;color: rgb(70, 64, 64);">Cars</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="createOffer" style="font-size: 20px;color: rgb(70, 64, 64);">Add New Car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold" href="#" style="font-size: 20px;color: rgb(70, 64, 64);" (click)="logout()">Logout</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<section class="bg-light mt-5">
+  <h1 style="font-size: 70px; text-align: center;">{{header}}</h1>
+  <div class="container-lg mt-4">
+    <div class="text-center mx-5" *ngIf="car">
+     
+      <div id="carouselExampleIndicators" class="carousel slide mt-1" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button *ngFor="let image of images; let index = index; let isFirst = first" [ngClass]="{ active: isFirst }" type="button" data-bs-target="#carouselExampleIndicators" [attr.data-bs-slide-to]=index class="active" aria-current="true" aria-label="Slide"></button>
+        </div>
+
+
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let image of images; let index = index; let isFirst = first" [ngClass]="{ active: isFirst }" >
+            <img [src]='car.pathImages+"/"+image' class="d-block w-100" style="height: 800px;border-radius: 10px;"/>
+          </div>
+        </div>
+
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="d-grid">
+      <button class="btn mt-3 text-uppercase" type="button" style="background-color: #f5c8a7;font-weight: bold; color:rgb(70, 64, 64);" (click)="showNumber()">{{number}}</button>
+    </div>
+
+    <div class="container mt-3" style="border-radius: 15px;border: 3px solid #cccccc">
+
+      <h2 class="mt-2" style="color: rgb(70, 64, 64);"> Car Informations </h2>
+
+      <div class="row g-lg-5 mx-3 align-items-center">
+
+        <div class="col-lg-6 pt-3">
+          
+          <p>
+            <span style="float:left">Mark </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.mark}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Model </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.model}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Years Old </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.yearsOld}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Kilometrage </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.km}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Fuel </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.fuel}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Cubicasis </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.cubicasis}} </span>
+          </p><br>
+
+        </div>
+        <div class="col-lg-6 pt-lg-3">
+          
+          <p>
+            <span style="float:left">Price </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.price}}&euro; </span>
+          </p><br>
+          <p>
+            <span style="float:left">Type Of Vehicle </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.typeOfVehicle}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Wheel Drive </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{drive}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Gearbox </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{gearbox}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Number Of Doors </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.numberOfDoors}} </span>
+          </p><br>
+          <p>
+            <span style="float:left">Number Of Seets  </span>
+            <span style="float:right;font-weight: bold;color: rgb(70, 64, 64);"> {{car.numberOfSeets}} </span>
+          </p><br>
+
+        </div>
+
+      </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
